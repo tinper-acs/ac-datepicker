@@ -10,12 +10,6 @@ const propTypes = {};
 const defaultProps = {};
 
 class AcDatepicker extends Component {
-    renderFooter=()=>{
-        return (
-            <div className='ac-rangepicker-footer'>123123123131313</div>
-        )
-    }
-
     render(){
         return (<BeeDatepicker {...this.props}/>)
     }

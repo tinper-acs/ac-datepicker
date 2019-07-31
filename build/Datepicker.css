@@ -1,0 +1,28 @@
+.ac-rangepicker .rc-calendar-range .rc-calendar-footer-btn {
+  padding: 0; }
+
+.ac-rangepicker-footer {
+  height: 100px;
+  text-align: left;
+  padding-left: 12px;
+  border-bottom: 1px solid #dee0e3;
+  margin-bottom: 10px; }
+  .ac-rangepicker-footer-btn {
+    color: #f53c32;
+    background-color: #ffebee;
+    border-radius: 3px;
+    border: 1px solid #f53c32;
+    margin: 3px 2px;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0px 5px;
+    white-space: nowrap;
+    display: inline-block; }
+    .ac-rangepicker-footer-btn:hover, .ac-rangepicker-footer-btn.selected {
+      background-color: #ffcdd2; }
+    .ac-rangepicker-footer-btn-clear {
+      float: right; }
+      .ac-rangepicker-footer-btn-clear .uf-clean {
+        font-size: 23px;
+        color: #f53c32;
+        cursor: pointer; }
