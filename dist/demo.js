@@ -76,7 +76,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(268);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 这是标题", "code": "/**\n*\n* @title 这是标题\n* @description 这是描述\n*\n*/\nimport React, { Component } from 'react';\nimport {  } from 'tinper-bee';\nimport AcDatepicker from \"ac-datepicker\";\nimport moment from 'moment';\n\n\n\nconst { AcYearPicker,AcMonthPicker,AcWeekPicker,AcRangePicker } = AcDatepicker;\n\n\nconst format = \"YYYY-MM-DD dddd\"\n\nclass Demo1 extends Component {\n    onSelect = (d, dataString)  => {\n        console.log('select')\n        console.log(d, dataString);\n    }\n    onClick = d => {\n        console.log('click')\n    }\n    onChange = (d, dataString) => {\n        console.log('change')\n        console.log(d, dataString)\n    };\n    onDateInputBlur = (e,v) => {\n        console.log(e,v);\n    }\n\n    onStartInputBlur = (e,startValue,array) => {\n        console.log('RangePicker面板 左输入框的失焦事件',startValue,array)\n    }\n    onEndInputBlur = (e,endValue,array) => {\n        console.log('RangePicker面板 右输入框的失焦事件',endValue,array)\n    }\n    render () {\n        return (\n            <div>\n                {/* <AcDatepicker\n                    format={format}\n                    onSelect={this.onSelect}\n                    onChange={this.onChange}\n                    onClick={this.onClick}\n                    onDateInputBlur={this.onDateInputBlur}\n                /> */}\n                <AcRangePicker\n                    placeholder={'开始 ~ 结束'}\n                    dateInputPlaceholder={['开始', '结束']}\n                    showClear={true}\n                    onChange={this.onChange}\n                    onPanelChange={(v)=>{console.log('onPanelChange',v)}}\n                    showClose={false}\n                    onStartInputBlur={this.onStartInputBlur}\n                    onEndInputBlur={this.onEndInputBlur}\n                    value={[moment(),moment()]}\n                />  \n            </div>\n        )\n    }\n}\n", "desc": " 这是描述" }];
+	var Demo1 = __webpack_require__(268);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 这是标题", "code": "/**\n*\n* @title 这是标题\n* @description 这是描述\n*\n*/\nimport React, { Component } from 'react';\nimport {  } from 'tinper-bee';\nimport AcDatepicker from \"ac-datepicker\";\nimport moment from 'moment';\n\n\n\nconst { AcYearPicker,AcMonthPicker,AcWeekPicker,AcRangePicker } = AcDatepicker;\n\n\nconst format = \"YYYY-MM-DD dddd\"\n\nclass Demo1 extends Component {\n    constructor(props){\n        super(props);\n        this.state={\n            \n        }\n    }\n\n    onSelect = (d, dataString)  => {\n        console.log('select')\n        console.log(d, dataString);\n    }\n    onClick = d => {\n        console.log('click')\n\n    }\n    onChange = (d, dataString) => {\n        console.log('change')\n        console.log(d, dataString)\n    };\n    onDateInputBlur = (e,v) => {\n        console.log(e,v);\n    }\n\n    onStartInputBlur = (e,startValue,array) => {\n        console.log('RangePicker面板 左输入框的失焦事件',startValue,array)\n    }\n    onEndInputBlur = (e,endValue,array) => {\n        console.log('RangePicker面板 右输入框的失焦事件',endValue,array)\n    }\n    render () {\n        return (\n            <div>\n                <AcRangePicker\n                    placeholder={'开始 ~ 结束'}\n                    dateInputPlaceholder={['开始', '结束']}\n                    showClear={true}\n                    onChange={this.onChange}\n                    onPanelChange={(v)=>{console.log('onPanelChange',v)}}\n                    showClose={true}\n                    onStartInputBlur={this.onStartInputBlur}\n                    onEndInputBlur={this.onEndInputBlur}\n                />  \n            </div>\n        )\n    }\n}\n", "desc": " 这是描述" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -36933,30 +36933,39 @@
 	var Demo1 = function (_Component) {
 	    _inherits(Demo1, _Component);
 	
-	    function Demo1() {
-	        var _temp, _this, _ret;
-	
+	    function Demo1(props) {
 	        _classCallCheck(this, Demo1);
 	
-	        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	            args[_key] = arguments[_key];
-	        }
+	        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
 	
-	        return _ret = (_temp = (_this = _possibleConstructorReturn(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this.onSelect = function (d, dataString) {
+	        _this.onSelect = function (d, dataString) {
 	            console.log('select');
 	            console.log(d, dataString);
-	        }, _this.onClick = function (d) {
+	        };
+	
+	        _this.onClick = function (d) {
 	            console.log('click');
-	        }, _this.onChange = function (d, dataString) {
+	        };
+	
+	        _this.onChange = function (d, dataString) {
 	            console.log('change');
 	            console.log(d, dataString);
-	        }, _this.onDateInputBlur = function (e, v) {
+	        };
+	
+	        _this.onDateInputBlur = function (e, v) {
 	            console.log(e, v);
-	        }, _this.onStartInputBlur = function (e, startValue, array) {
+	        };
+	
+	        _this.onStartInputBlur = function (e, startValue, array) {
 	            console.log('RangePicker面板 左输入框的失焦事件', startValue, array);
-	        }, _this.onEndInputBlur = function (e, endValue, array) {
+	        };
+	
+	        _this.onEndInputBlur = function (e, endValue, array) {
 	            console.log('RangePicker面板 右输入框的失焦事件', endValue, array);
-	        }, _temp), _possibleConstructorReturn(_this, _ret);
+	        };
+	
+	        _this.state = {};
+	        return _this;
 	    }
 	
 	    Demo1.prototype.render = function render() {
@@ -36971,10 +36980,9 @@
 	                onPanelChange: function onPanelChange(v) {
 	                    console.log('onPanelChange', v);
 	                },
-	                showClose: false,
+	                showClose: true,
 	                onStartInputBlur: this.onStartInputBlur,
-	                onEndInputBlur: this.onEndInputBlur,
-	                value: [(0, _moment2['default'])(), (0, _moment2['default'])()]
+	                onEndInputBlur: this.onEndInputBlur
 	            })
 	        );
 	    };
@@ -37053,21 +37061,9 @@
 	    _inherits(AcDatepicker, _Component);
 	
 	    function AcDatepicker() {
-	        var _temp, _this, _ret;
-	
 	        _classCallCheck(this, AcDatepicker);
 	
-	        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	            args[_key] = arguments[_key];
-	        }
-	
-	        return _ret = (_temp = (_this = _possibleConstructorReturn(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this.renderFooter = function () {
-	            return _react2['default'].createElement(
-	                'div',
-	                { className: 'ac-rangepicker-footer' },
-	                '123123123131313'
-	            );
-	        }, _temp), _possibleConstructorReturn(_this, _ret);
+	        return _possibleConstructorReturn(this, _Component.apply(this, arguments));
 	    }
 	
 	    AcDatepicker.prototype.render = function render() {
@@ -64973,6 +64969,7 @@
 	            value: []
 	        });
 	        _this3.props.onChange && _this3.props.onChange([], []);
+	        _this3.props.onFormControlClear && _this3.props.onFormControlClear();
 	    };
 	
 	    this.onOpenChange = function (open) {
@@ -66868,6 +66865,17 @@
 	    footerLocale: locale,
 	    footerClassName: 'ac-rangepicker-footer'
 	};
+	function formatDate(value, format) {
+	    if (!value) {
+	        return '';
+	    }
+	
+	    if (Array.isArray(format)) {
+	        format = format[0];
+	    }
+	
+	    return value.format(format);
+	}
 	
 	var AcRangePicker = function (_Component) {
 	    _inherits(AcRangePicker, _Component);
@@ -66899,7 +66907,7 @@
 	            } else if (length == 1) {
 	                value.push(item.value);
 	                btns[index].active = true;
-	                _this.props.onChange && _this.props.onChange(value, [value[0].format(formatStr), value[1].format(formatStr)]);
+	                _this.props.onChange && _this.props.onChange(value, '["' + formatDate(value[0], formatStr) + '" , "' + formatDate(value[1], formatStr) + '"]');
 	                _this.setState({
 	                    value: value,
 	                    btns: btns,
@@ -66917,6 +66925,7 @@
 	        };
 	
 	        _this.clear = function () {
+	            console.log('clear');
 	            var btns = _this.state.btns;
 	
 	            btns.forEach(function (element) {
@@ -66926,6 +66935,14 @@
 	                value: [],
 	                btns: btns
 	            });
+	        };
+	
+	        _this.onChange = function (value) {
+	            _this.setState({
+	                value: value
+	            });
+	            var formatStr = _this.props.format || 'YYYY-MM-DD';
+	            _this.props.onChange && _this.props.onChange(value, '["' + formatDate(value[0], formatStr) + '" , "' + formatDate(value[1], formatStr) + '"]');
 	        };
 	
 	        _this.renderFooter = function () {
@@ -66958,18 +66975,33 @@
 	        };
 	
 	        _this.state = {
-	            value: [],
+	            value: props.value || props.defaultValue || [],
 	            btns: _this.getBtns(),
 	            open: false
 	        };
 	        return _this;
 	    }
 	
+	    AcRangePicker.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+	        if ("value" in nextProps) {
+	            this.setState({
+	                value: nextProps.value
+	            });
+	        }
+	    };
+	
 	    AcRangePicker.prototype.render = function render() {
 	        var _props$value = this.props.value,
 	            value = _props$value === undefined ? [] : _props$value;
 	
-	        return _react2['default'].createElement(RangePicker, _extends({}, this.props, { open: this.state.open, onOpenChange: this.onOpenChange, value: this.state.value.length == 2 ? this.state.value : value, className: 'ac-rangepicker', renderFooter: this.renderFooter, showToday: false }));
+	        return _react2['default'].createElement(RangePicker, _extends({}, this.props, {
+	            open: this.state.open,
+	            onOpenChange: this.onOpenChange,
+	            onChange: this.onChange,
+	            value: this.state.value,
+	            className: 'ac-rangepicker',
+	            renderFooter: this.renderFooter,
+	            showToday: false }));
 	    };
 	
 	    return AcRangePicker;

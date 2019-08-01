@@ -16,12 +16,20 @@ const { AcYearPicker,AcMonthPicker,AcWeekPicker,AcRangePicker } = AcDatepicker;
 const format = "YYYY-MM-DD dddd"
 
 class Demo1 extends Component {
+    constructor(props){
+        super(props);
+        this.state={
+            
+        }
+    }
+
     onSelect = (d, dataString)  => {
         console.log('select')
         console.log(d, dataString);
     }
     onClick = d => {
         console.log('click')
+
     }
     onChange = (d, dataString) => {
         console.log('change')
@@ -40,23 +48,15 @@ class Demo1 extends Component {
     render () {
         return (
             <div>
-                {/* <AcDatepicker
-                    format={format}
-                    onSelect={this.onSelect}
-                    onChange={this.onChange}
-                    onClick={this.onClick}
-                    onDateInputBlur={this.onDateInputBlur}
-                /> */}
                 <AcRangePicker
                     placeholder={'开始 ~ 结束'}
                     dateInputPlaceholder={['开始', '结束']}
                     showClear={true}
                     onChange={this.onChange}
                     onPanelChange={(v)=>{console.log('onPanelChange',v)}}
-                    showClose={false}
+                    showClose={true}
                     onStartInputBlur={this.onStartInputBlur}
                     onEndInputBlur={this.onEndInputBlur}
-                    value={[moment(),moment()]}
                 />  
             </div>
         )

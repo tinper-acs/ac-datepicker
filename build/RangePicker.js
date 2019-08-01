@@ -72,6 +72,17 @@ var defaultProps = {
     footerLocale: locale,
     footerClassName: 'ac-rangepicker-footer'
 };
+function formatDate(value, format) {
+    if (!value) {
+        return '';
+    }
+
+    if (Array.isArray(format)) {
+        format = format[0];
+    }
+
+    return value.format(format);
+}
 
 var AcRangePicker = function (_Component) {
     _inherits(AcRangePicker, _Component);
@@ -103,7 +114,7 @@ var AcRangePicker = function (_Component) {
             } else if (length == 1) {
                 value.push(item.value);
                 btns[index].active = true;
-                _this.props.onChange && _this.props.onChange(value, [value[0].format(formatStr), value[1].format(formatStr)]);
+                _this.props.onChange && _this.props.onChange(value, '["' + formatDate(value[0], formatStr) + '" , "' + formatDate(value[1], formatStr) + '"]');
                 _this.setState({
                     value: value,
                     btns: btns,
@@ -121,6 +132,7 @@ var AcRangePicker = function (_Component) {
         };
 
         _this.clear = function () {
+            console.log('clear');
             var btns = _this.state.btns;
 
             btns.forEach(function (element) {
@@ -130,6 +142,14 @@ var AcRangePicker = function (_Component) {
                 value: [],
                 btns: btns
             });
+        };
+
+        _this.onChange = function (value) {
+            _this.setState({
+                value: value
+            });
+            var formatStr = _this.props.format || 'YYYY-MM-DD';
+            _this.props.onChange && _this.props.onChange(value, '["' + formatDate(value[0], formatStr) + '" , "' + formatDate(value[1], formatStr) + '"]');
         };
 
         _this.renderFooter = function () {
@@ -162,18 +182,33 @@ var AcRangePicker = function (_Component) {
         };
 
         _this.state = {
-            value: [],
+            value: props.value || props.defaultValue || [],
             btns: _this.getBtns(),
             open: false
         };
         return _this;
     }
 
+    AcRangePicker.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+        if ("value" in nextProps) {
+            this.setState({
+                value: nextProps.value
+            });
+        }
+    };
+
     AcRangePicker.prototype.render = function render() {
         var _props$value = this.props.value,
             value = _props$value === undefined ? [] : _props$value;
 
-        return _react2["default"].createElement(RangePicker, _extends({}, this.props, { open: this.state.open, onOpenChange: this.onOpenChange, value: this.state.value.length == 2 ? this.state.value : value, className: 'ac-rangepicker', renderFooter: this.renderFooter, showToday: false }));
+        return _react2["default"].createElement(RangePicker, _extends({}, this.props, {
+            open: this.state.open,
+            onOpenChange: this.onOpenChange,
+            onChange: this.onChange,
+            value: this.state.value,
+            className: 'ac-rangepicker',
+            renderFooter: this.renderFooter,
+            showToday: false }));
     };
 
     return AcRangePicker;

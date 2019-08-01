@@ -1,5 +1,7 @@
-.ac-rangepicker .rc-calendar-range .rc-calendar-footer-btn {
-  padding: 0; }
+.ac-rangepicker {
+  width: 100%; }
+  .ac-rangepicker .rc-calendar-range .rc-calendar-footer-btn {
+    padding: 0; }
 
 .ac-rangepicker-footer {
   height: 100px;

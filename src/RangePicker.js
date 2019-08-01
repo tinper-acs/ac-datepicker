@@ -39,12 +39,23 @@ const defaultProps = {
     footerLocale:locale,
     footerClassName:'ac-rangepicker-footer'
 };
+function formatDate(value, format) {
+    if (!value) {
+      return '';
+    }
+  
+    if (Array.isArray(format)) {
+      format = format[0];
+    }
+  
+    return value.format(format);
+  }
 
 class AcRangePicker extends Component{
     constructor(props){
         super(props);
         this.state={
-            value:[],
+            value:props.value || props.defaultValue || [],
             btns:this.getBtns(),
             open:false
         }
@@ -73,6 +84,14 @@ class AcRangePicker extends Component{
         ]
     }
 
+    componentWillReceiveProps(nextProps){
+        if ("value" in nextProps) {
+            this.setState({
+                value: nextProps.value
+            });
+        }
+    }
+
     btnClick=(item,index)=>{
         let { btns, value} = this.state;
         let length = value.length;
@@ -87,7 +106,7 @@ class AcRangePicker extends Component{
         }else if(length==1){
             value.push(item.value);
             btns[index].active=true;
-            this.props.onChange&&this.props.onChange(value,[value[0].format(formatStr),value[1].format(formatStr)])
+            this.props.onChange&&this.props.onChange(value,`["${formatDate(value[0],formatStr)}" , "${formatDate(value[1],formatStr)}"]`)
             this.setState({
                 value,
                 btns,
@@ -103,7 +122,7 @@ class AcRangePicker extends Component{
             open
         })
     }
-    clear=()=>{
+    clear=()=>{console.log('clear')
         let { btns } = this.state;
         btns.forEach(element => {
             element.active=false;
@@ -112,6 +131,13 @@ class AcRangePicker extends Component{
             value:[],
             btns
         })
+    }
+    onChange=(value)=>{
+        this.setState({
+            value
+        })
+        let formatStr = this.props.format || 'YYYY-MM-DD';
+        this.props.onChange&&this.props.onChange(value,`["${formatDate(value[0],formatStr)}" , "${formatDate(value[1],formatStr)}"]`)
     }
 
     renderFooter=()=>{
@@ -137,7 +163,14 @@ class AcRangePicker extends Component{
     
     render(){
         let { value = [] } = this.props;
-        return (<RangePicker  {...this.props} open={this.state.open} onOpenChange={this.onOpenChange} value={this.state.value.length==2?this.state.value:value} className='ac-rangepicker' renderFooter={this.renderFooter} showToday={false}/>)
+        return (<RangePicker  {...this.props} 
+            open={this.state.open} 
+            onOpenChange={this.onOpenChange} 
+            onChange={this.onChange}
+            value={this.state.value}
+            className='ac-rangepicker' 
+            renderFooter={this.renderFooter} 
+            showToday={false} />)
     }
 }
 
