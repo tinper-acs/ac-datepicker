@@ -214,6 +214,9 @@ var AcRangePicker = function (_Component) {
     return AcRangePicker;
 }(_react.Component);
 
+AcRangePicker.displayName = 'acRangepicker';
+
+
 AcRangePicker.propTypes = propTypes;
 AcRangePicker.defaultProps = defaultProps;
 exports["default"] = AcRangePicker;

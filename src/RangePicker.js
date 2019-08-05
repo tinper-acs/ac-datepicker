@@ -60,6 +60,7 @@ class AcRangePicker extends Component{
             open:false
         }
     }
+    static displayName = 'acRangepicker';
     getBtns=()=>{
         const footerLocale = this.props.footerLocale;
         return [
