@@ -1,12 +1,11 @@
 /**
 *
-* @title 这是标题
-* @description 这是描述
+* @title Rangepicker基本示例
+* @description 封装函数区域
 *
 */
 import React, { Component } from 'react';
 import AcDatepicker from '../../src';
-import moment from 'moment';
 
 
 
