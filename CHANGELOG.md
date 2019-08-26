@@ -1,3 +1,13 @@
+<a name="0.0.5"></a>
+## [0.0.5](https://github.com/tinper-bee/ac-datepicker/compare/v0.0.4...v0.0.5) (2019-08-26)
+
+
+### Features
+
+* **ac-datepicke:** 支持多语+第一个比第二个值小 ([088735d](https://github.com/tinper-bee/ac-datepicker/commit/088735d))
+
+
+
 <a name="0.0.4"></a>
 ## [0.0.4](https://github.com/tinper-bee/ac-datepicker/compare/v0.0.3...v0.0.4) (2019-08-06)
 
