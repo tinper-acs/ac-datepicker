@@ -26,6 +26,24 @@ var _moment = require('moment');
 
 var _moment2 = _interopRequireDefault(_moment);
 
+var _i18n = require('./i18n');
+
+var _i18n2 = _interopRequireDefault(_i18n);
+
+var _zh_CN = require('bee-datepicker/build/locale/zh_CN');
+
+var _zh_CN2 = _interopRequireDefault(_zh_CN);
+
+var _zh_TW = require('bee-datepicker/build/locale/zh_TW');
+
+var _zh_TW2 = _interopRequireDefault(_zh_TW);
+
+var _en_US = require('bee-datepicker/build/locale/en_US');
+
+var _en_US2 = _interopRequireDefault(_en_US);
+
+var _utils = require('./utils');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -36,42 +54,21 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 
-_moment2["default"].locale('zh-cn');
-
 var RangePicker = _beeDatepicker2["default"].RangePicker;
 
-
-var locale = {
-    'yesterday': '昨日',
-    'today': '今日',
-    'tomorrow': '明日',
-    'lastMonth': '上月',
-    'thisMonth': '本月',
-    'nextMonth': '下月',
-    'lastWeek': '上周',
-    'thisWeek': '本周',
-    'nextWeek': '下周',
-    'lastQuarter': '上季',
-    'thisQuarter': '本季',
-    'nextQuarter': '下季',
-    'lastYear': '去年',
-    'thisYear': '今年',
-    'nextYear': '明年',
-    'lastDayOfMonth': '本月最后一天',
-    'lastDayOfWeek': '本周最后一天',
-    'lastDayOfLastMonth': '上月最后一天'
-};
 
 var propTypes = {
     value: _propTypes2["default"].value,
     defaultValue: _propTypes2["default"].defaultValue,
     footerLocale: _propTypes2["default"].object,
-    footerClassName: _propTypes2["default"].string
+    footerClassName: _propTypes2["default"].string,
+    localeCookie: _propTypes2["default"].string //当前语种的cookie key值
 };
 var defaultProps = {
-    footerLocale: locale,
-    footerClassName: 'ac-rangepicker-footer'
+    footerClassName: 'ac-rangepicker-footer',
+    localeCookie: 'locale'
 };
+
 function formatDate(value, format) {
     if (!value) {
         return '';
@@ -93,7 +90,11 @@ var AcRangePicker = function (_Component) {
         var _this = _possibleConstructorReturn(this, _Component.call(this, props));
 
         _this.getBtns = function () {
-            var footerLocale = _this.props.footerLocale;
+            var localeCookie = _this.props.localeCookie;
+
+            var footerLocale = _i18n2["default"];
+            if ((0, _utils.getCookie)(localeCookie) == 'zh_TW') footerLocale = _i18n2["default"].zh_TW;
+            if ((0, _utils.getCookie)(localeCookie) == 'en_US') footerLocale = _i18n2["default"].en_US;
             return [{ key: 'yesterday', name: footerLocale['yesterday'], active: false, value: (0, _moment2["default"])().subtract(1, 'd') }, { key: 'today', name: footerLocale['today'], active: false, value: (0, _moment2["default"])() }, { key: 'tomorrow', name: footerLocale['tomorrow'], active: false, value: (0, _moment2["default"])().add(1, 'd') }, { key: 'lastMonth', name: footerLocale['lastMonth'], active: false, value: (0, _moment2["default"])().subtract(1, 'M') }, { key: 'thisMonth', name: footerLocale['thisMonth'], active: false, value: (0, _moment2["default"])().startOf('M') }, { key: 'nextMonth', name: footerLocale['nextMonth'], active: false, value: (0, _moment2["default"])().add(1, 'M') }, { key: 'lastWeek', name: footerLocale['lastWeek'], active: false, value: (0, _moment2["default"])().subtract(1, 'w') }, { key: 'thisWeek', name: footerLocale['thisWeek'], active: false, value: (0, _moment2["default"])().startOf('w') }, { key: 'nextWeek', name: footerLocale['nextWeek'], active: false, value: (0, _moment2["default"])().add(1, 'w') }, { key: 'lastQuarter', name: footerLocale['lastQuarter'], active: false, value: (0, _moment2["default"])().startOf('Q').subtract(1, 'Q') }, { key: 'thisQuarter', name: footerLocale['thisQuarter'], active: false, value: (0, _moment2["default"])().startOf('Q') }, { key: 'nextQuarter', name: footerLocale['nextQuarter'], active: false, value: (0, _moment2["default"])().startOf('Q').add(1, 'Q') }, { key: 'lastYear', name: footerLocale['lastYear'], active: false, value: (0, _moment2["default"])().subtract(1, 'y') }, { key: 'thisYear', name: footerLocale['thisYear'], active: false, value: (0, _moment2["default"])().startOf('y') }, { key: 'nextYear', name: footerLocale['nextYear'], active: false, value: (0, _moment2["default"])().add(1, 'y') }, { key: 'lastDayOfMonth', name: footerLocale['lastDayOfMonth'], active: false, value: (0, _moment2["default"])().endOf("m") }, { key: 'lastDayOfWeek', name: footerLocale['lastDayOfWeek'], active: false, value: (0, _moment2["default"])().endOf("w") }, { key: 'lastDayOfLastMonth', name: footerLocale['lastDayOfLastMonth'], active: false, value: (0, _moment2["default"])().subtract(1, 'M').endOf("M") }];
         };
 
@@ -112,7 +113,12 @@ var AcRangePicker = function (_Component) {
                     btns: btns
                 });
             } else if (length == 1) {
-                value.push(item.value);
+                if (item.value.isBefore(value[0])) {
+                    value.unshift(item.value);
+                } else {
+                    value.push(item.value);
+                }
+
                 btns[index].active = true;
                 _this.props.onChange && _this.props.onChange(value, '["' + formatDate(value[0], formatStr) + '" , "' + formatDate(value[1], formatStr) + '"]');
                 _this.setState({
@@ -132,7 +138,6 @@ var AcRangePicker = function (_Component) {
         };
 
         _this.clear = function () {
-            console.log('clear');
             var btns = _this.state.btns;
 
             btns.forEach(function (element) {
@@ -198,10 +203,22 @@ var AcRangePicker = function (_Component) {
     };
 
     AcRangePicker.prototype.render = function render() {
-        var _props$value = this.props.value,
-            value = _props$value === undefined ? [] : _props$value;
+        var localeCookie = this.props.localeCookie;
 
+        var language = _zh_CN2["default"];
+        var locale = (0, _utils.getCookie)(localeCookie);
+        if (locale == 'zh_TW') {
+            _moment2["default"].locale('zh-cn');
+            language = _zh_TW2["default"];
+        } else if (locale == 'en_US') {
+            _moment2["default"].locale('en');
+            language = _en_US2["default"];
+        } else {
+            _moment2["default"].locale('zh-cn');
+            language = _zh_CN2["default"];
+        }
         return _react2["default"].createElement(RangePicker, _extends({}, this.props, {
+            locale: language,
             open: this.state.open,
             onOpenChange: this.onOpenChange,
             onChange: this.onChange,

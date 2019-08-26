@@ -4,13 +4,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _beeDatepicker = require('bee-datepicker');
 
@@ -19,6 +17,24 @@ var _beeDatepicker2 = _interopRequireDefault(_beeDatepicker);
 var _RangePicker = require('./RangePicker');
 
 var _RangePicker2 = _interopRequireDefault(_RangePicker);
+
+var _utils = require('./utils');
+
+var _moment = require('moment');
+
+var _moment2 = _interopRequireDefault(_moment);
+
+var _zh_CN = require('bee-datepicker/build/locale/zh_CN');
+
+var _zh_CN2 = _interopRequireDefault(_zh_CN);
+
+var _zh_TW = require('bee-datepicker/build/locale/zh_TW');
+
+var _zh_TW2 = _interopRequireDefault(_zh_TW);
+
+var _en_US = require('bee-datepicker/build/locale/en_US');
+
+var _en_US2 = _interopRequireDefault(_en_US);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -36,8 +52,12 @@ var YearPicker = _beeDatepicker2["default"].YearPicker,
     RangePicker = _beeDatepicker2["default"].RangePicker;
 
 
-var propTypes = {};
-var defaultProps = {};
+var propTypes = {
+    localeCookie: PropTypes.string //当前语种的cookie key值
+};
+var defaultProps = {
+    localeCookie: 'locale'
+};
 
 var AcDatepicker = function (_Component) {
     _inherits(AcDatepicker, _Component);
@@ -49,7 +69,21 @@ var AcDatepicker = function (_Component) {
     }
 
     AcDatepicker.prototype.render = function render() {
-        return _react2["default"].createElement(_beeDatepicker2["default"], this.props);
+        var localeCookie = this.props.localeCookie;
+
+        var language = _zh_CN2["default"];
+        var locale = (0, _utils.getCookie)(localeCookie);
+        if (locale == 'zh_TW') {
+            _moment2["default"].locale('zh-cn');
+            language = _zh_TW2["default"];
+        } else if (locale == 'en_US') {
+            _moment2["default"].locale('en');
+            language = _en_US2["default"];
+        } else {
+            _moment2["default"].locale('zh-cn');
+            language = _zh_CN2["default"];
+        }
+        return _react2["default"].createElement(_beeDatepicker2["default"], _extends({}, this.props, { locale: language }));
     };
 
     return AcDatepicker;

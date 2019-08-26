@@ -1,11 +1,19 @@
 /**
 *
-* @title Rangepicker基本示例
-* @description 封装函数区域
+* @title Rangepicker多语示例
+* @description 多语示例
 *
 */
 import React, { Component } from 'react';
 import AcDatepicker from '../../src';
+
+
+const setCookie = (name,value) => { 
+    var Days = 30; 
+    var exp = new Date(); 
+    exp.setTime(exp.getTime() + Days*24*60*60*1000); 
+    document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString(); 
+} 
 
 
 
@@ -20,6 +28,10 @@ class Demo1 extends Component {
         this.state={
             
         }
+    }
+    componentWillMount(){
+        //设置 cookie 为 en_US即可
+        setCookie('locale','en_US')
     }
 
     onSelect = (d, dataString)  => {
@@ -48,8 +60,7 @@ class Demo1 extends Component {
         return (
             <div>
                 <AcRangePicker
-                    placeholder={'开始 ~ 结束'}
-                    dateInputPlaceholder={['开始', '结束']}
+                    dateInputPlaceholder={['start', 'end']}
                     showClear={true}
                     onChange={this.onChange}
                     onPanelChange={(v)=>{console.log('onPanelChange',v)}}
@@ -57,6 +68,11 @@ class Demo1 extends Component {
                     onStartInputBlur={this.onStartInputBlur}
                     onEndInputBlur={this.onEndInputBlur}
                 />
+                <div>
+                    <AcDatepicker
+                        format="YYYY-MM-DD"
+                    />
+                </div>
             </div>
         )
     }

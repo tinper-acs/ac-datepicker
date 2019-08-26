@@ -76,7 +76,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(268);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " 这是标题", "code": "/**\n*\n* @title 这是标题\n* @description 这是描述\n*\n*/\nimport React, { Component } from 'react';\nimport {  } from 'tinper-bee';\nimport AcDatepicker from \"ac-datepicker\";\nimport moment from 'moment';\n\n\n\nconst { AcYearPicker,AcMonthPicker,AcWeekPicker,AcRangePicker } = AcDatepicker;\n\n\nconst format = \"YYYY-MM-DD dddd\"\n\nclass Demo1 extends Component {\n    constructor(props){\n        super(props);\n        this.state={\n            \n        }\n    }\n\n    onSelect = (d, dataString)  => {\n        console.log('select')\n        console.log(d, dataString);\n    }\n    onClick = d => {\n        console.log('click')\n\n    }\n    onChange = (d, dataString) => {\n        console.log('change')\n        console.log(d, dataString)\n    };\n    onDateInputBlur = (e,v) => {\n        console.log(e,v);\n    }\n\n    onStartInputBlur = (e,startValue,array) => {\n        console.log('RangePicker面板 左输入框的失焦事件',startValue,array)\n    }\n    onEndInputBlur = (e,endValue,array) => {\n        console.log('RangePicker面板 右输入框的失焦事件',endValue,array)\n    }\n    render () {\n        return (\n            <div>\n                <AcRangePicker\n                    placeholder={'开始 ~ 结束'}\n                    dateInputPlaceholder={['开始', '结束']}\n                    showClear={true}\n                    onChange={this.onChange}\n                    onPanelChange={(v)=>{console.log('onPanelChange',v)}}\n                    showClose={true}\n                    onStartInputBlur={this.onStartInputBlur}\n                    onEndInputBlur={this.onEndInputBlur}\n                />  \n            </div>\n        )\n    }\n}\n", "desc": " 这是描述" }];
+	var Demo1 = __webpack_require__(268);var Demo2 = __webpack_require__(513);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " Rangepicker基本示例", "code": "/**\n*\n* @title Rangepicker基本示例\n* @description 封装函数区域\n*\n*/\nimport React, { Component } from 'react';\nimport AcDatepicker from 'ac-datepicker';\n\n\n\nconst { AcYearPicker,AcMonthPicker,AcWeekPicker,AcRangePicker } = AcDatepicker;\n\n\nconst format = \"YYYY-MM-DD dddd\"\n\nclass Demo1 extends Component {\n    constructor(props){\n        super(props);\n        this.state={\n            \n        }\n    }\n\n    onSelect = (d, dataString)  => {\n        console.log('select')\n        console.log(d, dataString);\n    }\n    onClick = d => {\n        console.log('click')\n\n    }\n    onChange = (d, dataString) => {\n        console.log('change')\n        console.log(d, dataString)\n    };\n    onDateInputBlur = (e,v) => {\n        console.log(e,v);\n    }\n\n    onStartInputBlur = (e,startValue,array) => {\n        console.log('RangePicker面板 左输入框的失焦事件',startValue,array)\n    }\n    onEndInputBlur = (e,endValue,array) => {\n        console.log('RangePicker面板 右输入框的失焦事件',endValue,array)\n    }\n    render () {\n        return (\n            <div>\n                <AcRangePicker\n                    placeholder={'开始 ~ 结束'}\n                    dateInputPlaceholder={['开始', '结束']}\n                    showClear={true}\n                    onChange={this.onChange}\n                    onPanelChange={(v)=>{console.log('onPanelChange',v)}}\n                    showClose={true}\n                    onStartInputBlur={this.onStartInputBlur}\n                    onEndInputBlur={this.onEndInputBlur}\n                />\n            </div>\n        )\n    }\n}\nexport default Demo1", "desc": " 封装函数区域" }, { "example": _react2['default'].createElement(Demo2, null), "title": " Rangepicker多语示例", "code": "/**\n*\n* @title Rangepicker多语示例\n* @description 多语示例\n*\n*/\nimport React, { Component } from 'react';\nimport AcDatepicker from 'ac-datepicker';\n\n\nconst setCookie = (name,value) => { \n    var Days = 30; \n    var exp = new Date(); \n    exp.setTime(exp.getTime() + Days*24*60*60*1000); \n    document.cookie = name + \"=\"+ escape (value) + \";expires=\" + exp.toGMTString(); \n} \n\n\n\nconst { AcYearPicker,AcMonthPicker,AcWeekPicker,AcRangePicker } = AcDatepicker;\n\n\nconst format = \"YYYY-MM-DD dddd\"\n\nclass Demo1 extends Component {\n    constructor(props){\n        super(props);\n        this.state={\n            \n        }\n    }\n    componentWillMount(){\n        //设置 cookie 为 en_US即可\n        setCookie('locale','en_US')\n    }\n\n    onSelect = (d, dataString)  => {\n        console.log('select')\n        console.log(d, dataString);\n    }\n    onClick = d => {\n        console.log('click')\n\n    }\n    onChange = (d, dataString) => {\n        console.log('change')\n        console.log(d, dataString)\n    };\n    onDateInputBlur = (e,v) => {\n        console.log(e,v);\n    }\n\n    onStartInputBlur = (e,startValue,array) => {\n        console.log('RangePicker面板 左输入框的失焦事件',startValue,array)\n    }\n    onEndInputBlur = (e,endValue,array) => {\n        console.log('RangePicker面板 右输入框的失焦事件',endValue,array)\n    }\n    render () {\n        return (\n            <div>\n                <AcRangePicker\n                    dateInputPlaceholder={['start', 'end']}\n                    showClear={true}\n                    onChange={this.onChange}\n                    onPanelChange={(v)=>{console.log('onPanelChange',v)}}\n                    showClose={true}\n                    onStartInputBlur={this.onStartInputBlur}\n                    onEndInputBlur={this.onEndInputBlur}\n                />\n                <div>\n                    <AcDatepicker\n                        format=\"YYYY-MM-DD\"\n                    />\n                </div>\n            </div>\n        )\n    }\n}\nexport default Demo1", "desc": " 多语示例" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -36902,10 +36902,6 @@
 	
 	var _src2 = _interopRequireDefault(_src);
 	
-	var _moment = __webpack_require__(279);
-	
-	var _moment2 = _interopRequireDefault(_moment);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
 	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -36916,8 +36912,8 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               *
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @title 这是标题
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @description 这是描述
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @title Rangepicker基本示例
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @description 封装函数区域
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               *
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
 	
@@ -37022,13 +37018,11 @@
 	    value: true
 	});
 	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
-	
-	var _propTypes = __webpack_require__(6);
-	
-	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
 	var _beeDatepicker = __webpack_require__(271);
 	
@@ -37037,6 +37031,24 @@
 	var _RangePicker = __webpack_require__(509);
 	
 	var _RangePicker2 = _interopRequireDefault(_RangePicker);
+	
+	var _utils = __webpack_require__(512);
+	
+	var _moment = __webpack_require__(279);
+	
+	var _moment2 = _interopRequireDefault(_moment);
+	
+	var _zh_CN = __webpack_require__(501);
+	
+	var _zh_CN2 = _interopRequireDefault(_zh_CN);
+	
+	var _zh_TW = __webpack_require__(511);
+	
+	var _zh_TW2 = _interopRequireDefault(_zh_TW);
+	
+	var _en_US = __webpack_require__(423);
+	
+	var _en_US2 = _interopRequireDefault(_en_US);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -37054,8 +37066,12 @@
 	    RangePicker = _beeDatepicker2['default'].RangePicker;
 	
 	
-	var propTypes = {};
-	var defaultProps = {};
+	var propTypes = {
+	    localeCookie: PropTypes.string //当前语种的cookie key值
+	};
+	var defaultProps = {
+	    localeCookie: 'locale'
+	};
 	
 	var AcDatepicker = function (_Component) {
 	    _inherits(AcDatepicker, _Component);
@@ -37067,7 +37083,21 @@
 	    }
 	
 	    AcDatepicker.prototype.render = function render() {
-	        return _react2['default'].createElement(_beeDatepicker2['default'], this.props);
+	        var localeCookie = this.props.localeCookie;
+	
+	        var language = _zh_CN2['default'];
+	        var locale = (0, _utils.getCookie)(localeCookie);
+	        if (locale == 'zh_TW') {
+	            _moment2['default'].locale('zh-cn');
+	            language = _zh_TW2['default'];
+	        } else if (locale == 'en_US') {
+	            _moment2['default'].locale('en');
+	            language = _en_US2['default'];
+	        } else {
+	            _moment2['default'].locale('zh-cn');
+	            language = _zh_CN2['default'];
+	        }
+	        return _react2['default'].createElement(_beeDatepicker2['default'], _extends({}, this.props, { locale: language }));
 	    };
 	
 	    return AcDatepicker;
@@ -66819,6 +66849,24 @@
 	
 	var _moment2 = _interopRequireDefault(_moment);
 	
+	var _i18n = __webpack_require__(510);
+	
+	var _i18n2 = _interopRequireDefault(_i18n);
+	
+	var _zh_CN = __webpack_require__(501);
+	
+	var _zh_CN2 = _interopRequireDefault(_zh_CN);
+	
+	var _zh_TW = __webpack_require__(511);
+	
+	var _zh_TW2 = _interopRequireDefault(_zh_TW);
+	
+	var _en_US = __webpack_require__(423);
+	
+	var _en_US2 = _interopRequireDefault(_en_US);
+	
+	var _utils = __webpack_require__(512);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
 	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -66829,42 +66877,21 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	_moment2['default'].locale('zh-cn');
-	
 	var RangePicker = _beeDatepicker2['default'].RangePicker;
 	
-	
-	var locale = {
-	    'yesterday': '昨日',
-	    'today': '今日',
-	    'tomorrow': '明日',
-	    'lastMonth': '上月',
-	    'thisMonth': '本月',
-	    'nextMonth': '下月',
-	    'lastWeek': '上周',
-	    'thisWeek': '本周',
-	    'nextWeek': '下周',
-	    'lastQuarter': '上季',
-	    'thisQuarter': '本季',
-	    'nextQuarter': '下季',
-	    'lastYear': '去年',
-	    'thisYear': '今年',
-	    'nextYear': '明年',
-	    'lastDayOfMonth': '本月最后一天',
-	    'lastDayOfWeek': '本周最后一天',
-	    'lastDayOfLastMonth': '上月最后一天'
-	};
 	
 	var propTypes = {
 	    value: _propTypes2['default'].value,
 	    defaultValue: _propTypes2['default'].defaultValue,
 	    footerLocale: _propTypes2['default'].object,
-	    footerClassName: _propTypes2['default'].string
+	    footerClassName: _propTypes2['default'].string,
+	    localeCookie: _propTypes2['default'].string //当前语种的cookie key值
 	};
 	var defaultProps = {
-	    footerLocale: locale,
-	    footerClassName: 'ac-rangepicker-footer'
+	    footerClassName: 'ac-rangepicker-footer',
+	    localeCookie: 'locale'
 	};
+	
 	function formatDate(value, format) {
 	    if (!value) {
 	        return '';
@@ -66886,7 +66913,11 @@
 	        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
 	
 	        _this.getBtns = function () {
-	            var footerLocale = _this.props.footerLocale;
+	            var localeCookie = _this.props.localeCookie;
+	
+	            var footerLocale = _i18n2['default'];
+	            if ((0, _utils.getCookie)(localeCookie) == 'zh_TW') footerLocale = _i18n2['default'].zh_TW;
+	            if ((0, _utils.getCookie)(localeCookie) == 'en_US') footerLocale = _i18n2['default'].en_US;
 	            return [{ key: 'yesterday', name: footerLocale['yesterday'], active: false, value: (0, _moment2['default'])().subtract(1, 'd') }, { key: 'today', name: footerLocale['today'], active: false, value: (0, _moment2['default'])() }, { key: 'tomorrow', name: footerLocale['tomorrow'], active: false, value: (0, _moment2['default'])().add(1, 'd') }, { key: 'lastMonth', name: footerLocale['lastMonth'], active: false, value: (0, _moment2['default'])().subtract(1, 'M') }, { key: 'thisMonth', name: footerLocale['thisMonth'], active: false, value: (0, _moment2['default'])().startOf('M') }, { key: 'nextMonth', name: footerLocale['nextMonth'], active: false, value: (0, _moment2['default'])().add(1, 'M') }, { key: 'lastWeek', name: footerLocale['lastWeek'], active: false, value: (0, _moment2['default'])().subtract(1, 'w') }, { key: 'thisWeek', name: footerLocale['thisWeek'], active: false, value: (0, _moment2['default'])().startOf('w') }, { key: 'nextWeek', name: footerLocale['nextWeek'], active: false, value: (0, _moment2['default'])().add(1, 'w') }, { key: 'lastQuarter', name: footerLocale['lastQuarter'], active: false, value: (0, _moment2['default'])().startOf('Q').subtract(1, 'Q') }, { key: 'thisQuarter', name: footerLocale['thisQuarter'], active: false, value: (0, _moment2['default'])().startOf('Q') }, { key: 'nextQuarter', name: footerLocale['nextQuarter'], active: false, value: (0, _moment2['default'])().startOf('Q').add(1, 'Q') }, { key: 'lastYear', name: footerLocale['lastYear'], active: false, value: (0, _moment2['default'])().subtract(1, 'y') }, { key: 'thisYear', name: footerLocale['thisYear'], active: false, value: (0, _moment2['default'])().startOf('y') }, { key: 'nextYear', name: footerLocale['nextYear'], active: false, value: (0, _moment2['default'])().add(1, 'y') }, { key: 'lastDayOfMonth', name: footerLocale['lastDayOfMonth'], active: false, value: (0, _moment2['default'])().endOf("m") }, { key: 'lastDayOfWeek', name: footerLocale['lastDayOfWeek'], active: false, value: (0, _moment2['default'])().endOf("w") }, { key: 'lastDayOfLastMonth', name: footerLocale['lastDayOfLastMonth'], active: false, value: (0, _moment2['default'])().subtract(1, 'M').endOf("M") }];
 	        };
 	
@@ -66905,7 +66936,12 @@
 	                    btns: btns
 	                });
 	            } else if (length == 1) {
-	                value.push(item.value);
+	                if (item.value.isBefore(value[0])) {
+	                    value.unshift(item.value);
+	                } else {
+	                    value.push(item.value);
+	                }
+	
 	                btns[index].active = true;
 	                _this.props.onChange && _this.props.onChange(value, '["' + formatDate(value[0], formatStr) + '" , "' + formatDate(value[1], formatStr) + '"]');
 	                _this.setState({
@@ -66925,7 +66961,6 @@
 	        };
 	
 	        _this.clear = function () {
-	            console.log('clear');
 	            var btns = _this.state.btns;
 	
 	            btns.forEach(function (element) {
@@ -66991,10 +67026,22 @@
 	    };
 	
 	    AcRangePicker.prototype.render = function render() {
-	        var _props$value = this.props.value,
-	            value = _props$value === undefined ? [] : _props$value;
+	        var localeCookie = this.props.localeCookie;
 	
+	        var language = _zh_CN2['default'];
+	        var locale = (0, _utils.getCookie)(localeCookie);
+	        if (locale == 'zh_TW') {
+	            _moment2['default'].locale('zh-cn');
+	            language = _zh_TW2['default'];
+	        } else if (locale == 'en_US') {
+	            _moment2['default'].locale('en');
+	            language = _en_US2['default'];
+	        } else {
+	            _moment2['default'].locale('zh-cn');
+	            language = _zh_CN2['default'];
+	        }
 	        return _react2['default'].createElement(RangePicker, _extends({}, this.props, {
+	            locale: language,
 	            open: this.state.open,
 	            onOpenChange: this.onOpenChange,
 	            onChange: this.onChange,
@@ -67013,6 +67060,271 @@
 	AcRangePicker.propTypes = propTypes;
 	AcRangePicker.defaultProps = defaultProps;
 	exports['default'] = AcRangePicker;
+	module.exports = exports['default'];
+
+/***/ }),
+/* 510 */
+/***/ (function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports['default'] = {
+	    'yesterday': '昨日',
+	    'today': '今日',
+	    'tomorrow': '明日',
+	    'lastMonth': '上月',
+	    'thisMonth': '本月',
+	    'nextMonth': '下月',
+	    'lastWeek': '上周',
+	    'thisWeek': '本周',
+	    'nextWeek': '下周',
+	    'lastQuarter': '上季',
+	    'thisQuarter': '本季',
+	    'nextQuarter': '下季',
+	    'lastYear': '去年',
+	    'thisYear': '今年',
+	    'nextYear': '明年',
+	    'lastDayOfMonth': '本月最后一天',
+	    'lastDayOfWeek': '本周最后一天',
+	    'lastDayOfLastMonth': '上月最后一天',
+	    'zh_TW': {
+	        'yesterday': '昨日',
+	        'today': '今日',
+	        'tomorrow': '明日',
+	        'lastMonth': '上月',
+	        'thisMonth': '本月',
+	        'nextMonth': '下月',
+	        'lastWeek': '上周',
+	        'thisWeek': '本周',
+	        'nextWeek': '下周',
+	        'lastQuarter': '上季',
+	        'thisQuarter': '本季',
+	        'nextQuarter': '下季',
+	        'lastYear': '去年',
+	        'thisYear': '今年',
+	        'nextYear': '明年',
+	        'lastDayOfMonth': '本月最後一天',
+	        'lastDayOfWeek': '本周最後一天',
+	        'lastDayOfLastMonth': '上月最後一天'
+	    },
+	    'en_US': {
+	        'yesterday': 'Yesterday',
+	        'today': 'Today',
+	        'tomorrow': 'Tomorrow',
+	        'lastMonth': 'Last month',
+	        'thisMonth': 'This month',
+	        'nextMonth': 'Next month',
+	        'lastWeek': 'Last week',
+	        'thisWeek': 'This week',
+	        'nextWeek': 'Next week',
+	        'lastQuarter': 'Last season',
+	        'thisQuarter': 'This season',
+	        'nextQuarter': 'Next season',
+	        'lastYear': 'Last year',
+	        'thisYear': 'This year',
+	        'nextYear': 'Next year',
+	        'lastDayOfMonth': 'Last day of the month',
+	        'lastDayOfWeek': 'Last day of the week',
+	        'lastDayOfLastMonth': 'Last day of last month'
+	    }
+	};
+	module.exports = exports['default'];
+
+/***/ }),
+/* 511 */
+/***/ (function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports["default"] = {
+	  today: '今天',
+	  now: '此刻',
+	  backToToday: '返回今天',
+	  ok: '確定',
+	  timeSelect: '選擇時間',
+	  dateSelect: '選擇日期',
+	  clear: '清除',
+	  month: '月',
+	  year: '年',
+	  previousMonth: '上個月 (翻頁上鍵)',
+	  nextMonth: '下個月 (翻頁下鍵)',
+	  monthSelect: '選擇月份',
+	  yearSelect: '選擇年份',
+	  decadeSelect: '選擇年代',
+	  yearFormat: 'YYYY年',
+	  dayFormat: 'D日',
+	  dateFormat: 'YYYY年M月D日',
+	  dateTimeFormat: 'YYYY年M月D日 HH時mm分ss秒',
+	  previousYear: '上一年 (Control鍵加左方向鍵)',
+	  nextYear: '下一年 (Control鍵加右方向鍵)',
+	  previousDecade: '上一年代',
+	  nextDecade: '下一年代',
+	  previousCentury: '上一世紀',
+	  nextCentury: '下一世紀',
+	  lastWeek: '上一週',
+	  nowWeek: '本週',
+	  nextWeek: '下一週'
+	};
+	module.exports = exports['default'];
+
+/***/ }),
+/* 512 */
+/***/ (function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	var getCookie = exports.getCookie = function getCookie(name) {
+	    var cookieValue = null;
+	    if (document.cookie && document.cookie != '') {
+	        var cookies = document.cookie.split(';');
+	        for (var i = 0; i < cookies.length; i++) {
+	            var cookie = cookies[i].trim();
+	            if (cookie.substring(0, name.length + 1) == name + '=') {
+	                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+	                break;
+	            }
+	        }
+	    }
+	    return cookieValue;
+	};
+	
+	var setCookie = exports.setCookie = function setCookie(name, value) {
+	    var Days = 30;
+	    var exp = new Date();
+	    exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+	    document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+	};
+
+/***/ }),
+/* 513 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _src = __webpack_require__(269);
+	
+	var _src2 = _interopRequireDefault(_src);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               *
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @title Rangepicker多语示例
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @description 多语示例
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               *
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
+	
+	
+	var setCookie = function setCookie(name, value) {
+	    var Days = 30;
+	    var exp = new Date();
+	    exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+	    document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+	};
+	
+	var AcYearPicker = _src2['default'].AcYearPicker,
+	    AcMonthPicker = _src2['default'].AcMonthPicker,
+	    AcWeekPicker = _src2['default'].AcWeekPicker,
+	    AcRangePicker = _src2['default'].AcRangePicker;
+	
+	
+	var format = "YYYY-MM-DD dddd";
+	
+	var Demo1 = function (_Component) {
+	    _inherits(Demo1, _Component);
+	
+	    function Demo1(props) {
+	        _classCallCheck(this, Demo1);
+	
+	        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+	
+	        _this.onSelect = function (d, dataString) {
+	            console.log('select');
+	            console.log(d, dataString);
+	        };
+	
+	        _this.onClick = function (d) {
+	            console.log('click');
+	        };
+	
+	        _this.onChange = function (d, dataString) {
+	            console.log('change');
+	            console.log(d, dataString);
+	        };
+	
+	        _this.onDateInputBlur = function (e, v) {
+	            console.log(e, v);
+	        };
+	
+	        _this.onStartInputBlur = function (e, startValue, array) {
+	            console.log('RangePicker面板 左输入框的失焦事件', startValue, array);
+	        };
+	
+	        _this.onEndInputBlur = function (e, endValue, array) {
+	            console.log('RangePicker面板 右输入框的失焦事件', endValue, array);
+	        };
+	
+	        _this.state = {};
+	        return _this;
+	    }
+	
+	    Demo1.prototype.componentWillMount = function componentWillMount() {
+	        //设置 cookie 为 en_US即可
+	        setCookie('locale', 'en_US');
+	    };
+	
+	    Demo1.prototype.render = function render() {
+	        return _react2['default'].createElement(
+	            'div',
+	            null,
+	            _react2['default'].createElement(AcRangePicker, {
+	                dateInputPlaceholder: ['start', 'end'],
+	                showClear: true,
+	                onChange: this.onChange,
+	                onPanelChange: function onPanelChange(v) {
+	                    console.log('onPanelChange', v);
+	                },
+	                showClose: true,
+	                onStartInputBlur: this.onStartInputBlur,
+	                onEndInputBlur: this.onEndInputBlur
+	            }),
+	            _react2['default'].createElement(
+	                'div',
+	                null,
+	                _react2['default'].createElement(_src2['default'], {
+	                    format: 'YYYY-MM-DD'
+	                })
+	            )
+	        );
+	    };
+	
+	    return Demo1;
+	}(_react.Component);
+	
+	exports['default'] = Demo1;
 	module.exports = exports['default'];
 
 /***/ })

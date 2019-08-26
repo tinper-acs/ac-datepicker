@@ -3,42 +3,28 @@ import PropTypes from 'prop-types';
 import BeeDatepicker from 'bee-datepicker';
 import Icon from 'bee-icon';
 import moment from 'moment';
-moment.locale('zh-cn');
+import i18n from './i18n';
+import ZH_CN from 'bee-datepicker/build/locale/zh_CN';
+import ZH_TW from 'bee-datepicker/build/locale/zh_TW';
+import EN_US from 'bee-datepicker/build/locale/en_US';
+import { getCookie } from './utils'
+
 
 const { RangePicker } = BeeDatepicker;
-
-const locale = {
-    'yesterday':'昨日',
-    'today':'今日',
-    'tomorrow':'明日',
-    'lastMonth':'上月',
-    'thisMonth':'本月',
-    'nextMonth':'下月',
-    'lastWeek':'上周',
-    'thisWeek':'本周',
-    'nextWeek':'下周',
-    'lastQuarter':'上季',
-    'thisQuarter':'本季',
-    'nextQuarter':'下季',
-    'lastYear':'去年',
-    'thisYear':'今年',
-    'nextYear':'明年',
-    'lastDayOfMonth':'本月最后一天',
-    'lastDayOfWeek':'本周最后一天',
-    'lastDayOfLastMonth':'上月最后一天'
-}
-
 
 const propTypes = {
     value:PropTypes.value,
     defaultValue:PropTypes.defaultValue,
     footerLocale:PropTypes.object,
-    footerClassName:PropTypes.string
+    footerClassName:PropTypes.string,
+    localeCookie:PropTypes.string,//当前语种的cookie key值
 };
 const defaultProps = {
-    footerLocale:locale,
-    footerClassName:'ac-rangepicker-footer'
+    footerClassName:'ac-rangepicker-footer',
+    localeCookie:'locale'
 };
+
+
 function formatDate(value, format) {
     if (!value) {
       return '';
@@ -62,7 +48,10 @@ class AcRangePicker extends Component{
     }
     static displayName = 'acRangepicker';
     getBtns=()=>{
-        const footerLocale = this.props.footerLocale;
+        let { localeCookie } = this.props;
+        let footerLocale=i18n;
+        if(getCookie(localeCookie)=='zh_TW')footerLocale=i18n.zh_TW;
+        if(getCookie(localeCookie)=='en_US')footerLocale=i18n.en_US;
         return [
             {key:'yesterday',name:footerLocale['yesterday'],active:false,value:moment().subtract(1,'d')},
             {key:'today',name:footerLocale['today'],active:false,value:moment()},
@@ -105,7 +94,12 @@ class AcRangePicker extends Component{
                 btns
             })
         }else if(length==1){
-            value.push(item.value);
+            if(item.value.isBefore(value[0])){
+                value.unshift(item.value);
+            }else{
+                value.push(item.value);
+            }
+            
             btns[index].active=true;
             this.props.onChange&&this.props.onChange(value,`["${formatDate(value[0],formatStr)}" , "${formatDate(value[1],formatStr)}"]`)
             this.setState({
@@ -123,7 +117,7 @@ class AcRangePicker extends Component{
             open
         })
     }
-    clear=()=>{console.log('clear')
+    clear=()=>{
         let { btns } = this.state;
         btns.forEach(element => {
             element.active=false;
@@ -163,8 +157,22 @@ class AcRangePicker extends Component{
     }
     
     render(){
-        let { value = [] } = this.props;
-        return (<RangePicker  {...this.props} 
+        let { localeCookie } = this.props;
+        let language = ZH_CN;
+        let locale = getCookie(localeCookie);
+        if(locale=='zh_TW'){
+            moment.locale('zh-cn');
+            language = ZH_TW;
+        }else if(locale=='en_US'){
+            moment.locale('en');
+            language = EN_US;
+        }else{
+            moment.locale('zh-cn');  
+            language = ZH_CN;
+        }
+        return (<RangePicker  
+            {...this.props} 
+            locale={language}
             open={this.state.open} 
             onOpenChange={this.onOpenChange} 
             onChange={this.onChange}
