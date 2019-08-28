@@ -1,3 +1,13 @@
+<a name="0.0.6"></a>
+## [0.0.6](https://github.com/tinper-bee/ac-datepicker/compare/v0.0.5...v0.0.6) (2019-08-28)
+
+
+### Features
+
+* **ac-datepicker:** 清空bug ([8143df7](https://github.com/tinper-bee/ac-datepicker/commit/8143df7))
+
+
+
 <a name="0.0.5"></a>
 ## [0.0.5](https://github.com/tinper-bee/ac-datepicker/compare/v0.0.4...v0.0.5) (2019-08-26)
 
