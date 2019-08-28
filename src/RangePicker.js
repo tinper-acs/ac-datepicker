@@ -76,9 +76,22 @@ class AcRangePicker extends Component{
 
     componentWillReceiveProps(nextProps){
         if ("value" in nextProps) {
-            this.setState({
-                value: nextProps.value
-            });
+            let value = nextProps.value
+            if(value.length==0){
+                let { btns } = this.state;
+                btns.forEach(element => {
+                    element.active=false;
+                });
+                this.setState({
+                    value,
+                    btns
+                });
+            }else{
+                this.setState({
+                    value
+                });
+            }
+            
         }
     }
 
