@@ -20,9 +20,6 @@ const { AcYearPicker,AcMonthPicker,AcWeekPicker,AcRangePicker } = AcDatepicker;
 集成 [bee-datepicker的api](http://bee.tinper.org/tinper-bee/bee-datepicker)
 
 
-|参数|说明|类型|默认值|
-|:---|:-----|:----|:------|
-
 
  ## 注意事项
 
