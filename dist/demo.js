@@ -67019,9 +67019,22 @@
 	
 	    AcRangePicker.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
 	        if ("value" in nextProps) {
-	            this.setState({
-	                value: nextProps.value
-	            });
+	            var value = nextProps.value;
+	            if (value.length == 0) {
+	                var btns = this.state.btns;
+	
+	                btns.forEach(function (element) {
+	                    element.active = false;
+	                });
+	                this.setState({
+	                    value: value,
+	                    btns: btns
+	                });
+	            } else {
+	                this.setState({
+	                    value: value
+	                });
+	            }
 	        }
 	    };
 	
