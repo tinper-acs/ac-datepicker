@@ -17,10 +17,7 @@ const setCookie = (name,value) => {
 
 
 
-const { AcYearPicker,AcMonthPicker,AcWeekPicker,AcRangePicker } = AcDatepicker;
-
-
-const format = "YYYY-MM-DD dddd"
+const { AcRangePicker } = AcDatepicker;
 
 class Demo1 extends Component {
     constructor(props){
@@ -68,11 +65,6 @@ class Demo1 extends Component {
                     onStartInputBlur={this.onStartInputBlur}
                     onEndInputBlur={this.onEndInputBlur}
                 />
-                <div>
-                    <AcDatepicker
-                        format="YYYY-MM-DD"
-                    />
-                </div>
             </div>
         )
     }
