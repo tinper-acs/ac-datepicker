@@ -4,14 +4,20 @@
     .rc-calendar-range .rc-calendar-footer-btn{
         padding: 0;
     }
+    .rc-calendar-footer{
+        padding: 0 16px;
+    }
 }
 .ac-rangepicker-footer{
     min-height: 100px;
     padding-bottom: 10px;
     text-align: left;
-    padding-left: 12px;
+    padding-left: 16px;
+    padding-right: 16px;
     border-bottom: 1px solid #dee0e3;
     margin-bottom: 10px;
+    margin-left: -18px;
+    margin-right: -18px;
     &-btn{
         color: #f53c32;
         background-color: #ffebee;
@@ -19,10 +25,13 @@
         border: 1px solid #f53c32;
         margin: 3px 2px;
         cursor: pointer;
-        font-size: 14px;
+        font-size: 13px;
         padding: 0px 5px;
         white-space: nowrap;
         display: inline-block;
+        height: 24px;
+        min-width: 40px;
+        line-height: 24px;
         &:hover,&.selected{
             background-color: #ffcdd2;
         }

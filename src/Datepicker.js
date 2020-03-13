@@ -32,7 +32,7 @@ class AcDatepicker extends Component {
             moment.locale('zh-cn');  
             language = ZH_CN;
         }
-        return (<BeeDatepicker {...this.props} locale={language}/>)
+        return (<BeeDatepicker {...this.props} dropdownClassName="ac-rangepicker" locale={language}/>)
     }
 }
 

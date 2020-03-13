@@ -83,7 +83,7 @@ var AcDatepicker = function (_Component) {
             _moment2["default"].locale('zh-cn');
             language = _zh_CN2["default"];
         }
-        return _react2["default"].createElement(_beeDatepicker2["default"], _extends({}, this.props, { locale: language }));
+        return _react2["default"].createElement(_beeDatepicker2["default"], _extends({}, this.props, { dropdownClassName: 'ac-rangepicker', locale: language }));
     };
 
     return AcDatepicker;

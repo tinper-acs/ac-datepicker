@@ -76,7 +76,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 	
-	var Demo1 = __webpack_require__(268);var Demo2 = __webpack_require__(513);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " Rangepicker基本示例", "code": "/**\n*\n* @title Rangepicker基本示例\n* @description 封装函数区域\n*\n*/\nimport React, { Component } from 'react';\nimport AcDatepicker from 'ac-datepicker';\n\n\n\nconst { AcYearPicker,AcMonthPicker,AcWeekPicker,AcRangePicker } = AcDatepicker;\n\n\nconst format = \"YYYY-MM-DD dddd\"\n\nclass Demo1 extends Component {\n    constructor(props){\n        super(props);\n        this.state={\n            \n        }\n    }\n\n    onSelect = (d, dataString)  => {\n        console.log('select')\n        console.log(d, dataString);\n    }\n    onClick = d => {\n        console.log('click')\n\n    }\n    onChange = (d, dataString) => {\n        console.log('change')\n        console.log(d, dataString)\n    };\n    onDateInputBlur = (e,v) => {\n        console.log(e,v);\n    }\n\n    onStartInputBlur = (e,startValue,array) => {\n        console.log('RangePicker面板 左输入框的失焦事件',startValue,array)\n    }\n    onEndInputBlur = (e,endValue,array) => {\n        console.log('RangePicker面板 右输入框的失焦事件',endValue,array)\n    }\n    render () {\n        return (\n            <div>\n                <AcRangePicker\n                    placeholder={'开始 ~ 结束'}\n                    dateInputPlaceholder={['开始', '结束']}\n                    showClear={true}\n                    onChange={this.onChange}\n                    onPanelChange={(v)=>{console.log('onPanelChange',v)}}\n                    showClose={true}\n                    onStartInputBlur={this.onStartInputBlur}\n                    onEndInputBlur={this.onEndInputBlur}\n                />\n            </div>\n        )\n    }\n}\nexport default Demo1", "desc": " 封装函数区域" }, { "example": _react2['default'].createElement(Demo2, null), "title": " Rangepicker多语示例", "code": "/**\n*\n* @title Rangepicker多语示例\n* @description 多语示例\n*\n*/\nimport React, { Component } from 'react';\nimport AcDatepicker from 'ac-datepicker';\n\n\nconst setCookie = (name,value) => { \n    var Days = 30; \n    var exp = new Date(); \n    exp.setTime(exp.getTime() + Days*24*60*60*1000); \n    document.cookie = name + \"=\"+ escape (value) + \";expires=\" + exp.toGMTString(); \n} \n\n\n\nconst { AcRangePicker } = AcDatepicker;\n\nclass Demo1 extends Component {\n    constructor(props){\n        super(props);\n        this.state={\n            \n        }\n    }\n    componentWillMount(){\n        //设置 cookie 为 en_US即可\n        setCookie('locale','en_US')\n    }\n\n    onSelect = (d, dataString)  => {\n        console.log('select')\n        console.log(d, dataString);\n    }\n    onClick = d => {\n        console.log('click')\n\n    }\n    onChange = (d, dataString) => {\n        console.log('change')\n        console.log(d, dataString)\n    };\n    onDateInputBlur = (e,v) => {\n        console.log(e,v);\n    }\n\n    onStartInputBlur = (e,startValue,array) => {\n        console.log('RangePicker面板 左输入框的失焦事件',startValue,array)\n    }\n    onEndInputBlur = (e,endValue,array) => {\n        console.log('RangePicker面板 右输入框的失焦事件',endValue,array)\n    }\n    render () {\n        return (\n            <div>\n                <AcRangePicker\n                    dateInputPlaceholder={['start', 'end']}\n                    showClear={true}\n                    onChange={this.onChange}\n                    onPanelChange={(v)=>{console.log('onPanelChange',v)}}\n                    showClose={true}\n                    onStartInputBlur={this.onStartInputBlur}\n                    onEndInputBlur={this.onEndInputBlur}\n                />\n            </div>\n        )\n    }\n}\nexport default Demo1", "desc": " 多语示例" }];
+	var Demo1 = __webpack_require__(268);var DemoArray = [{ "example": _react2['default'].createElement(Demo1, null), "title": " Rangepicker基本示例", "code": "/**\n*\n* @title Rangepicker基本示例\n* @description 封装函数区域\n*\n*/\nimport React, { Component } from 'react';\nimport AcDatepicker from 'ac-datepicker';\n\n\n\nconst { AcYearPicker,AcMonthPicker,AcWeekPicker,AcRangePicker } = AcDatepicker;\n\n\nconst format = \"YYYY-MM-DD dddd\"\n\nclass Demo1 extends Component {\n    constructor(props){\n        super(props);\n        this.state={\n            \n        }\n    }\n\n    onSelect = (d, dataString)  => {\n        console.log('select')\n        console.log(d, dataString);\n    }\n    onClick = d => {\n        console.log('click')\n\n    }\n    onChange = (d, dataString) => {\n        console.log('change')\n        console.log(d, dataString)\n    };\n    onDateInputBlur = (e,v) => {\n        console.log(e,v);\n    }\n\n    onStartInputBlur = (e,startValue,array) => {\n        console.log('RangePicker面板 左输入框的失焦事件',startValue,array)\n    }\n    onEndInputBlur = (e,endValue,array) => {\n        console.log('RangePicker面板 右输入框的失焦事件',endValue,array)\n    }\n    render () {\n        return (\n            <div>\n                <AcRangePicker\n                    placeholder={'开始 ~ 结束'}\n                    dateInputPlaceholder={['开始', '结束']}\n                    showClear={true}\n                    onChange={this.onChange}\n                    onPanelChange={(v)=>{console.log('onPanelChange',v)}}\n                    showClose={true}\n                    onStartInputBlur={this.onStartInputBlur}\n                    onEndInputBlur={this.onEndInputBlur}\n                />\n            </div>\n        )\n    }\n}\nexport default Demo1", "desc": " 封装函数区域" }];
 	
 	var Demo = function (_Component) {
 	    _inherits(Demo, _Component);
@@ -6129,7 +6129,7 @@
 	    });
 	}
 	
-	function notice(content, duration_arg, type, onClose, position, style, keyboard, onEscapeKeyUp, showIcon) {
+	function notice(content, duration_arg, type, onClose, position, style, keyboard, onEscapeKeyUp, showIcon, icon, props) {
 	    if (positionType.findIndex(function (item) {
 	        return item === position;
 	    }) < 0) {
@@ -6157,7 +6157,7 @@
 	    var positionStyle = JSON.stringify(messageStyle_copy) == "{}" ? positionObj[position].messageStyle : messageStyle_copy;
 	    defaultStyle = _extends({}, positionStyle, style);
 	    getMessageInstance(position, function (instance) {
-	        instance.notice({
+	        instance.notice(_extends({}, props, {
 	            key: key,
 	            duration: duration,
 	            color: type,
@@ -6168,7 +6168,7 @@
 	                showIcon ? _react2["default"].createElement(
 	                    'div',
 	                    { className: clsPrefix + '-notice-description-icon' },
-	                    _react2["default"].createElement('i', { className: (0, _classnames2["default"])(iconType) })
+	                    icon ? _react2["default"].createElement('i', { className: (0, _classnames2["default"])('' + icon) }) : _react2["default"].createElement('i', { className: (0, _classnames2["default"])(iconType) })
 	                ) : null,
 	                _react2["default"].createElement(
 	                    'div',
@@ -6177,7 +6177,7 @@
 	                )
 	            ),
 	            onClose: onClose
-	        });
+	        }));
 	    }, keyboard, onEscapeKeyUp);
 	    return function () {
 	        var target = key++;
@@ -6201,8 +6201,9 @@
 	        var onClose = obj.onClose || noop;
 	        var position = obj.position || "top";
 	        var style = obj.style || {};
-	        var showIcon = obj.showIcon || true;
-	        return notice(content, duration, color, onClose, position, style, obj.keyboard, obj.onEscapeKeyUp, showIcon);
+	        var showIcon = obj.hasOwnProperty('showIcon') ? obj.showIcon : true;
+	        var icon = obj.hasOwnProperty('icon') ? obj.icon : false;
+	        return notice(content, duration, color, onClose, position, style, obj.keyboard, obj.onEscapeKeyUp, showIcon, icon, obj);
 	    },
 	    config: function config(options) {
 	        if (options.top !== undefined) {
@@ -7318,6 +7319,8 @@
 	  value: true
 	});
 	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
@@ -7339,6 +7342,8 @@
 	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
 	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -7412,7 +7417,12 @@
 	        style = _props.style,
 	        children = _props.children,
 	        color = _props.color,
-	        title = _props.title;
+	        title = _props.title,
+	        content = _props.content,
+	        onEnd = _props.onEnd,
+	        onClose = _props.onClose,
+	        duration = _props.duration,
+	        others = _objectWithoutProperties(_props, ['closable', 'clsPrefix', 'className', 'style', 'children', 'color', 'title', 'content', 'onEnd', 'onClose', 'duration']);
 	
 	    var componentClass = clsPrefix + '-notice';
 	    var classes = (_classes = {}, _defineProperty(_classes, '' + componentClass, 1), _defineProperty(_classes, componentClass + '-closable', closable), _defineProperty(_classes, className, !!className), _classes);
@@ -7421,7 +7431,7 @@
 	    }
 	    return _react2["default"].createElement(
 	      'div',
-	      { className: (0, _classnames2["default"])(classes), style: style, onClick: this.close },
+	      _extends({ className: (0, _classnames2["default"])(classes), style: style, onClick: this.close }, others),
 	      _react2["default"].createElement(
 	        'div',
 	        { className: componentClass + '-content' },
@@ -7565,6 +7575,12 @@
 	
 	var deselectCurrent = __webpack_require__(69);
 	
+	var clipboardToIE11Formatting = {
+	  "text/plain": "Text",
+	  "text/html": "Url",
+	  "default": "Text"
+	}
+	
 	var defaultMessage = "Copy to clipboard: #{key}, Enter";
 	
 	function format(message) {
@@ -7609,8 +7625,20 @@
 	      e.stopPropagation();
 	      if (options.format) {
 	        e.preventDefault();
-	        e.clipboardData.clearData();
-	        e.clipboardData.setData(options.format, text);
+	        if (typeof e.clipboardData === "undefined") { // IE 11
+	          debug && console.warn("unable to use e.clipboardData");
+	          debug && console.warn("trying IE specific stuff");
+	          window.clipboardData.clearData();
+	          var format = clipboardToIE11Formatting[options.format] || clipboardToIE11Formatting["default"]
+	          window.clipboardData.setData(format, text);
+	        } else { // all other browsers
+	          e.clipboardData.clearData();
+	          e.clipboardData.setData(options.format, text);
+	        }
+	      }
+	      if (options.onCopy) {
+	        e.preventDefault();
+	        options.onCopy(e.clipboardData);
 	      }
 	    });
 	
@@ -7629,6 +7657,7 @@
 	    debug && console.warn("trying IE specific stuff");
 	    try {
 	      window.clipboardData.setData(options.format || "text", text);
+	      options.onCopy && options.onCopy(window.clipboardData);
 	      success = true;
 	    } catch (err) {
 	      debug && console.error("unable to copy using clipboardData: ", err);
@@ -37097,7 +37126,7 @@
 	            _moment2['default'].locale('zh-cn');
 	            language = _zh_CN2['default'];
 	        }
-	        return _react2['default'].createElement(_beeDatepicker2['default'], _extends({}, this.props, { locale: language }));
+	        return _react2['default'].createElement(_beeDatepicker2['default'], _extends({}, this.props, { dropdownClassName: 'ac-rangepicker', locale: language }));
 	    };
 	
 	    return AcDatepicker;
@@ -67216,116 +67245,6 @@
 	    exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
 	    document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
 	};
-
-/***/ }),
-/* 513 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _src = __webpack_require__(269);
-	
-	var _src2 = _interopRequireDefault(_src);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               *
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @title Rangepicker多语示例
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * @description 多语示例
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               *
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
-	
-	
-	var setCookie = function setCookie(name, value) {
-	    var Days = 30;
-	    var exp = new Date();
-	    exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
-	    document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
-	};
-	
-	var AcRangePicker = _src2['default'].AcRangePicker;
-	
-	var Demo1 = function (_Component) {
-	    _inherits(Demo1, _Component);
-	
-	    function Demo1(props) {
-	        _classCallCheck(this, Demo1);
-	
-	        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
-	
-	        _this.onSelect = function (d, dataString) {
-	            console.log('select');
-	            console.log(d, dataString);
-	        };
-	
-	        _this.onClick = function (d) {
-	            console.log('click');
-	        };
-	
-	        _this.onChange = function (d, dataString) {
-	            console.log('change');
-	            console.log(d, dataString);
-	        };
-	
-	        _this.onDateInputBlur = function (e, v) {
-	            console.log(e, v);
-	        };
-	
-	        _this.onStartInputBlur = function (e, startValue, array) {
-	            console.log('RangePicker面板 左输入框的失焦事件', startValue, array);
-	        };
-	
-	        _this.onEndInputBlur = function (e, endValue, array) {
-	            console.log('RangePicker面板 右输入框的失焦事件', endValue, array);
-	        };
-	
-	        _this.state = {};
-	        return _this;
-	    }
-	
-	    Demo1.prototype.componentWillMount = function componentWillMount() {
-	        //设置 cookie 为 en_US即可
-	        setCookie('locale', 'en_US');
-	    };
-	
-	    Demo1.prototype.render = function render() {
-	        return _react2['default'].createElement(
-	            'div',
-	            null,
-	            _react2['default'].createElement(AcRangePicker, {
-	                dateInputPlaceholder: ['start', 'end'],
-	                showClear: true,
-	                onChange: this.onChange,
-	                onPanelChange: function onPanelChange(v) {
-	                    console.log('onPanelChange', v);
-	                },
-	                showClose: true,
-	                onStartInputBlur: this.onStartInputBlur,
-	                onEndInputBlur: this.onEndInputBlur
-	            })
-	        );
-	    };
-	
-	    return Demo1;
-	}(_react.Component);
-	
-	exports['default'] = Demo1;
-	module.exports = exports['default'];
 
 /***/ })
 /******/ ]);
