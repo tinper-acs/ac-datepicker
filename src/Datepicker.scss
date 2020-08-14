@@ -1,4 +1,4 @@
-
+$font-size: 12px;
 .ac-rangepicker{
     width: 100%;
     .rc-calendar-range .rc-calendar-footer-btn{
@@ -25,7 +25,7 @@
         border: 1px solid #f53c32;
         margin: 3px 2px;
         cursor: pointer;
-        font-size: 13px;
+        font-size: $font-size;
         padding: 0px 5px;
         white-space: nowrap;
         display: inline-block;
