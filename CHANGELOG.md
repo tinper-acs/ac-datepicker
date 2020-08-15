@@ -1,3 +1,7 @@
+## [1.0.2](https://github.com/tinper-bee/ac-datepicker/compare/v1.0.1...v1.0.2) (2020-08-15)
+
+
+
 <a name="0.0.7"></a>
 ## [0.0.7](https://github.com/tinper-bee/ac-datepicker/compare/v0.0.6...v0.0.7) (2020-03-13)
 
